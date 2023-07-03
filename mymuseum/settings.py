@@ -32,8 +32,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['mymuseum.herokuapp.com', 'localhost', 'mymuseum-2cb032376ab5.herokuapp.com']
-
+ALLOWED_HOSTS = ['mymuseum-2cb032376ab5.herokuapp.com']
+# 'mymuseum.herokuapp.com', 'localhost',
 
 # Application definition
 
