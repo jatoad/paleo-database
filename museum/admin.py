@@ -18,3 +18,7 @@ class CommentsAdmin(SummernoteModelAdmin):
     summernote_fields = ('comment_content')
     list_display = ('name', 'comment_content', 'specimen', 'created_on', 'approved')
     list_filter = ('approved', 'created_on')
+    actions = ['approve_comments']
+
+    def approve_comments(self, request, queryset):
+        queryset.update(approved=True)

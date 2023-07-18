@@ -32,7 +32,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['mymuseum-2cb032376ab5.herokuapp.com', '8000-jatoad-paleodatabase-1cu1b9m73s4.ws-us101.gitpod.io']
+ALLOWED_HOSTS = ['mymuseum-2cb032376ab5.herokuapp.com', '8000-jatoad-paleodatabase-1cu1b9m73s4.ws-eu101.gitpod.io']
 # 'mymuseum.herokuapp.com', 'localhost',
 
 # Application definition
