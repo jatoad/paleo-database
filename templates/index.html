@@ -4,11 +4,27 @@
 
 <div class="container-fluid">
     <div class="row">
-
         <!-- user specimen display -->
         <div class="col-12 mt-3 left">
             <div class="row">
-
+            {% for specimen in specimen_list %}
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="image-container">
+                                <img src="{{ specmien.specimen_image.url }}" alt="">
+                            </div>
+                            <div class="specimen-latin-name">
+                                {{ specimen.latin_name }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% if forloop.counter|divisibleby:4 %}
+            </div>
+            <div class="row">
+            {% endif %}
+            {% endfor %}
             </div>
         </div>
     </div>

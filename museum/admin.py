@@ -7,9 +7,9 @@ from django_summernote.admin import SummernoteModelAdmin
 class SpecimenAdmin(SummernoteModelAdmin):
 
     summernote_fields = ('additional_information')
-    list_filter = ('species_name', 'location', 'when_found', 'author', 'upload_date')
-    list_display = ('species_name', 'upload_date',)
-    search_fields = ['species_name', 'location', 'author']
+    list_filter = ('english_name', 'location', 'when_found', 'author', 'upload_date', 'latin_name')
+    list_display = ('english_name', 'upload_date', 'latin_name')
+    search_fields = ['english_name', 'location', 'author', 'latin_name']
 
 
 @admin.register(Comment)

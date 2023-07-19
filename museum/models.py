@@ -6,7 +6,8 @@ STATUS = ((0, 'Draft'), (1, 'Published'))
 
 
 class Specimen(models.Model):
-    species_name = models.CharField(max_length=200)
+    latin_name = models.CharField(max_length=200, default='latin name')
+    english_name = models.CharField(max_length=200, default='name')
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='specimen_upload', default=True)
     specimen_image = CloudinaryField('image', default='placeholder')
     when_found = models.CharField(max_length=200)
