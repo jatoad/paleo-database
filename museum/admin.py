@@ -10,6 +10,9 @@ class SpecimenAdmin(SummernoteModelAdmin):
     list_filter = ('english_name', 'location', 'when_found', 'author', 'upload_date', 'latin_name')
     list_display = ('english_name', 'upload_date', 'latin_name')
     search_fields = ['english_name', 'location', 'author', 'latin_name']
+   
+    def __init__(self):
+        self.fields['specimen_image'].required = True
 
 
 @admin.register(Comment)
