@@ -10,20 +10,33 @@
             {% for specimen in specimen_list %}
                 <div class="col-md-6">
                     <div class="card">
-                        <div class="card-body">
-                            <div class="image-container">
-                                <img src="{{ specmien.specimen_image.url }}" alt="">
+                        <a href="#" class="specimen-link">
+                            <div class="card-body">
+                                <div class="image-container">
+                                    <img src="{{ specmien.specimen_image.url }}" alt="">
+                                </div>
+                                <div class="info-container">
+                                    <p class="specimen-name">
+                                        <strong>
+                                            <h2>{{ specimen.latin_name }}</h2>
+                                            <h3> | {{ specimen.english_name }}</h3>
+                                        </strong>
+                                    </p>
+                                    <p class="location">
+                                        {{ specimen.locaton }}
+                                    </p>
+                                    <p class="date-found">
+                                        {{ specimen.when_found }}
+                                    </p>
+                                    <p class="comment-count">
+                                        <i class="fa-solid fa-comment-dots"></i>
+                                        {{ specimen.number_of_comments }}
+                                    </p>
+                                </div>
                             </div>
-                            <div class="specimen-latin-name">
-                                {{ specimen.latin_name }}
-                            </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
-            {% if forloop.counter|divisibleby:4 %}
-            </div>
-            <div class="row">
-            {% endif %}
             {% endfor %}
             </div>
         </div>
