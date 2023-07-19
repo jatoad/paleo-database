@@ -7,4 +7,3 @@ class SpecimenList(generic.ListView):
     model = Specimen
     queryset = Specimen.objects.filter(status=1).order_by(-created_on)
     template_name = 'index.html '
-
