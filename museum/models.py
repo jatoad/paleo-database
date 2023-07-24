@@ -28,7 +28,7 @@ class Meta:
 
 def __str__(self):
     return self.species_name
-    self.fields['specimen_image'].required = True
+    # self.fields['specimen_image'].required = True
 
 
 class Comment(models.Model):

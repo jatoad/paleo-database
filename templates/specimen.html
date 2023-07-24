@@ -3,57 +3,32 @@
 
 <div class="masthead">
     <div class="container">
-        <div class="row g-0">
-            <div class="col-md-6 masthead-text">
-                <!-- species name and class -->
-                <div>
-                    <h1 class="species-name-latin">
-                    
-                    </h1>
-                    <h3 class="species-name-english">
-                        
-                    </h3>
-                </div>
-                <!-- specimen information -->
-                <div>
-                    <h3 class="location">
-
-                    </h3>
-                    <h3 class="when-found">
-
-                    </h3>
-                </div>
-            </div>
-            <div class="d-none d-md-block col-md-6 masthead-image">
-                <!-- specimen image -->
-                {% if "placeholder" in species.featured_image.url %}
-                <img src="" width="100%">
-                {% else %}
-                <img src="" width="100%">
-                {% endif %}
-            </div>
+        <!-- species name and class -->
+        <div class="info-container">
+            <p class="specimen-name">
+                <strong>
+                    <h1>{{ specimen.latin_name }}</h2>
+                    <h3> | {{ specimen.english_name }}</h3>
+                </strong>
+            </p>
+        </div>
+        <div class="d-none d-md-block col-md-6 specimen-display-image">
+            <!-- specimen image -->
+            <img src="{{ specmien.specimen_image.url }}" width="100%">
+        </div>
+            <!-- specimen information -->
+        <div>
+            <h3 class="location">
+                {{ specimen.locaton }}
+            </h3>
+            <h3 class="when-found">
+                {{ specimen.when_found }}
+            </h3>
         </div>
     </div>
 </div>
 
 <div class="container">
-    <div class="row">
-        <div class="col card mb-4  mt-3 left  top">
-            <div class="card-body">
-                <!-- additional infromation about the specimen -->
-                <p class="card-text "></p>
-                <div class="row">
-                    <div class="col-1">
-                        {% with comments.count as total_comments %}
-                        <strong class="text-secondary"><i class="far fa-comments"></i>
-                            <!-- total comments -->
-                        </strong>
-                        {% endwith %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="row">
         <div class="col">
             <hr>
@@ -61,7 +36,10 @@
     </div>
     <div class="row">
         <div class="col-md-8 card mb-4  mt-3 ">
-            <h3>Comments:</h3>
+            {% with comments.count as total_comments %}
+                <strong class="text-secondary"><i class="far fa-comments"></i>
+                </strong>
+            {% endwith %}
             <div class="card-body">
                 <!-- We want a for loop inside the tags to iterate through each comment in comments -->
                 {% %}
@@ -79,11 +57,6 @@
                 </div>
                 <!-- Our for loop ends here -->
                 {% %}
-            </div>
-        </div>
-        <div class="col-md-4 card mb-4  mt-3 ">
-            <div class="card-body">
-                <!-- For later -->
             </div>
         </div>
     </div>
