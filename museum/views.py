@@ -11,14 +11,14 @@ class SpecimenList(generic.ListView):
 
 class SpecimenInfo(View):
     
-    def get(self, request, *args, **kwargs):
+    def get(self, request, slug, *args, **kwargs):
         queryset = post.objects.filter(status=1)
-        specimen = get_object_or_404(queryset)
+        specimen = get_object_or_404(queryset, slug=slug)
         comments = post.comments.filter(approved=true).order_by('created_on')
 
         return render(
             request,
-            "specimen.html", 
+            "specimen_page.html", 
             {
                 "specimen": specimen,
                 "comments": comments
