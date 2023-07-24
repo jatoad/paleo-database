@@ -20,7 +20,7 @@ if os.path.isfile('env.py'):
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates ')
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 
 # Quick-start development settings - unsuitable for production
@@ -32,7 +32,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['mymuseum-2cb032376ab5.herokuapp.com', '8000-jatoad-paleodatabase-1cu1b9m73s4.ws-eu101.gitpod.io']
+ALLOWED_HOSTS = ['mymuseum-2cb032376ab5.herokuapp.com', '8000-jatoad-paleodatabase-1cu1b9m73s4.ws-eu102.gitpod.io']
 # 'mymuseum.herokuapp.com', 'localhost',
 
 # Application definition

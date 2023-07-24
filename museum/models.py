@@ -8,7 +8,11 @@ STATUS = ((0, 'Draft'), (1, 'Published'))
 class Specimen(models.Model):
     latin_name = models.CharField(max_length=200, default='latin name')
     english_name = models.CharField(max_length=200, default='name')
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='specimen_upload', default=True)
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE,
+        related_name='specimen_upload',
+        default=True
+    )
     specimen_image = CloudinaryField('image', default='placeholder')
     when_found = models.CharField(max_length=200)
     upload_date = models.DateTimeField(auto_now_add=True)
@@ -28,7 +32,11 @@ def __str__(self):
 
 
 class Comment(models.Model):
-    specimen = models.ForeignKey(Specimen, on_delete=models.CASCADE, related_name='Comment')
+    specimen = models.ForeignKey(
+        Specimen,
+        on_delete=models.CASCADE,
+        related_name='Comment'
+    )
     name = models.CharField(max_length=80)
     email = models.EmailField()
     comment_content = models.TextField()
