@@ -5,7 +5,7 @@
     <div class="col-12 mt-3 left">
         {% for specimen in specimen_list %}
             <div class="col-md-6 card">
-                <a href="{% url 'specimen_page' post.slug  %}" class="specimen-link">
+                <a href="{% url 'specimen_page' specimen.slug  %}" class="specimen-link">
                     <div class="card-body">
                         <div class="image-container">
                             <img src="{{ specmien.specimen_image.url }}" alt="">
