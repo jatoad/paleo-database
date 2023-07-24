@@ -8,7 +8,7 @@
             {% for specimen in specimen_list %}
                 <div class="col-md-6">
                     <div class="card">
-                        <a href="#" class="specimen-link">
+                        <a href="{% url 'specimen_details' specimen.slug %}" class="specimen-link">
                             <div class="card-body">
                                 <div class="image-container">
                                     <img src="{{ specmien.specimen_image.url }}" alt="">
@@ -26,10 +26,16 @@
                                     <p class="date-found">
                                         {{ specimen.when_found }}
                                     </p>
-                                    <p class="comment-count">
-                                        <i class="fa-solid fa-comment-dots"></i>
-                                        {{ specimen.number_of_comments }}
-                                    </p>
+                                    <div class="amount-comments">
+                                        {% with comments.count as total_comments %}
+                                        <p>
+                                            <i class="fa-solid fa-comment-dots"></i>
+                                            <strong class="text-secondary">
+                                                {{ total_comments }}
+                                            </strong>
+                                        </p>
+                                        {% endwith %}
+                                    </div>
                                 </div>
                             </div>
                         </a>

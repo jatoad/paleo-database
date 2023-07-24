@@ -1,4 +1,10 @@
 
+/* navigation bar */
+
+nav {
+    background-color: aqua;
+}
+
 
 .card-body {
     border: solid black 2px;
