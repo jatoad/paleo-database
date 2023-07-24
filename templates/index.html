@@ -1,51 +1,38 @@
 {% extends "base.html" %} {% block content %}
-<!-- url 'specimen_details' specimen.slug -->
-<div class="container-fluid">
-    <div class="row">
-        <!-- user specimen display -->
-        <div class="col-12 mt-3 left">
-            <div class="row">
-            {% for specimen in specimen_list %}
-                <div class="col-md-6">
-                    <div class="card">
-                        <a href="#" class="specimen-link">
-                            <div class="card-body">
-                                <div class="image-container">
-                                    <img src="{{ specmien.specimen_image.url }}" alt="">
-                                </div>
-                                <div class="info-container">
-                                    <p class="specimen-name">
-                                        <strong>
-                                            <h3>{{ specimen.latin_name }}</h3>
-                                            <h4> | {{ specimen.english_name }}</h4>
-                                        </strong>
-                                    </p>
-                                    <p class="location">
-                                        {{ specimen.locaton }}
-                                    </p>
-                                    <p class="date-found">
-                                        {{ specimen.when_found }}
-                                    </p>
-                                    <div class="amount-comments">
-                                        {% with comments.count as total_comments %}
-                                        <p>
-                                            <i class="fa-solid fa-comment-dots"></i>
-                                            <strong class="text-secondary">
-                                                {{ total_comments }}
-                                            </strong>
-                                        </p>
-                                        {% endwith %}
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            {% endfor %}
-            </div>
-        </div>
-    </div>
 
+<div class="container-fluid row">
+    <!-- user specimen display -->
+    <div class="col-12 mt-3 left">
+        {% for specimen in specimen_list %}
+            <div class="col-md-6 card">
+                <a href="#" class="specimen-link">
+                    <div class="card-body">
+                        <div class="image-container">
+                            <img src="{{ specmien.specimen_image.url }}" alt="">
+                        </div>
+                        <div class="info-container">
+                            <p class="specimen-name">
+                                <strong>
+                                    <h3>{{ specimen.latin_name }}</h3>
+                                    <h4> | {{ specimen.english_name }}</h4>
+                                </strong>
+                            </p>
+                            <p class="location">
+                                {{ specimen.locaton }}
+                            </p>
+                            <p class="date-found">
+                                {{ specimen.when_found }}
+                            </p>
+                            <p class="comment-count">
+                                <i class="fa-solid fa-comment-dots"></i>
+                                {{ specimen.number_of_comments }}
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
 </div>
 
 {%endblock%}
