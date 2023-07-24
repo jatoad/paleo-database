@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="masthead">
-    <div class="container">
+<!-- specimen display with all information -->
+<div class="container">
+    <div class="specimen-container">
         <!-- species name and class -->
-        <div class="info-container">
+        <div class="specimen-name-container">
             <p class="specimen-name">
                 <strong>
                     <h1>{{ specimen.latin_name }}</h2>
@@ -14,10 +15,10 @@
         </div>
         <div class="d-none d-md-block col-md-6 specimen-display-image">
             <!-- specimen image -->
-            <img src="{{ specmien.specimen_image.url }}" width="100%">
+            <img src="{{ specmien.specimen_image.url }}" alt="image of {{ specimen.english_name }}">
         </div>
-            <!-- specimen information -->
-        <div>
+            <!-- specimen contextual information -->
+        <div class="specimen-context">
             <h3 class="location">
                 {{ specimen.locaton }}
             </h3>
@@ -25,39 +26,47 @@
                 {{ specimen.when_found }}
             </h3>
         </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <hr>
+            <!-- further information about specimen  -->
+        <div class="specimen-additional-info">
+            <p>
+                <strong><h3>Additional Specimen Information</h3></strong>
+                {{ specimen.additional_information }}
+            </p>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-8 card mb-4  mt-3 ">
+</div>
+<hr>
+<!-- comment section for providing goudance on any misidentifications on specimens -->
+<div class="container">
+    <div class="comment-container col-md-8 card mb-4 mt-3">
+        <div class="amount-comments">
             {% with comments.count as total_comments %}
-                <strong class="text-secondary"><i class="far fa-comments"></i>
+            <p>
+                <i class="far fa-comments"></i>
+                <strong class="text-secondary">
+                    {{ total_comments }}
                 </strong>
+            </p>
             {% endwith %}
-            <div class="card-body">
-                <!-- We want a for loop inside the tags to iterate through each comment in comments -->
-                {% %}
-                <div class="comments" style="padding: 10px;">
-                    <p class="font-weight-bold">
-                        <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
-                        {{ }}
-                        <span class=" text-muted font-weight-normal">
-                            <!-- The comment's created date goes here -->
-                            {{ }}
-                        </span> wrote:
-                    </p>
-                    <!-- The body of the comment goes before the | -->
-                    {{  | linebreaks }}
-                </div>
-                <!-- Our for loop ends here -->
-                {% %}
+        </div>
+        <div class="comment-body">
+            <!-- loop through comments -->
+            {% for comment in comments %}
+            <div class="comments" style="padding: 10px;">
+                <p class="commenter-name"> 
+                    <strong>
+                        {{ comment.name }}
+                    </strong>
+                    suggested:
+                </p>
+                <p class="comment-content">
+                    {{ comment.comment_content }}
+                </p>
+                <p class="comment-date">
+                    {{ comment.comment-date }}
+                </p>
             </div>
+            {% endfor %}
         </div>
     </div>
 </div>

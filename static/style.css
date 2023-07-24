@@ -1,1 +1,10 @@
-style
+
+
+.card-body {
+    border: solid black 2px;
+}
+
+
+.container {
+    border: solid black 2px;
+}

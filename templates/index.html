@@ -1,13 +1,11 @@
-{% extends "base.html" %}
-
-{% block content %}
+{% extends "base.html" %} {% block content %}
 
 <div class="container-fluid">
     <div class="row">
         <!-- user specimen display -->
         <div class="col-12 mt-3 left">
             <div class="row">
-            {% for specimen in SpecimenList %}
+            {% for specimen in specimen_list %}
                 <div class="col-md-6">
                     <div class="card">
                         <a href="#" class="specimen-link">
@@ -18,8 +16,8 @@
                                 <div class="info-container">
                                     <p class="specimen-name">
                                         <strong>
-                                            <h2>{{ specimen.latin_name }}</h2>
-                                            <h3> | {{ specimen.english_name }}</h3>
+                                            <h3>{{ specimen.latin_name }}</h3>
+                                            <h4> | {{ specimen.english_name }}</h4>
                                         </strong>
                                     </p>
                                     <p class="location">
