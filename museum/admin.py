@@ -10,6 +10,7 @@ class SpecimenAdmin(SummernoteModelAdmin):
     list_filter = ('english_name', 'location', 'when_found', 'author', 'upload_date', 'latin_name')
     list_display = ('english_name', 'upload_date', 'latin_name')
     search_fields = ['english_name', 'location', 'author', 'latin_name']
+    
 
 
 @admin.register(Comment)

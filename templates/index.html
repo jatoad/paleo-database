@@ -1,5 +1,5 @@
 {% extends "base.html" %} {% block content %}
-
+<!-- url 'specimen_details' specimen.slug -->
 <div class="container-fluid">
     <div class="row">
         <!-- user specimen display -->
@@ -8,7 +8,7 @@
             {% for specimen in specimen_list %}
                 <div class="col-md-6">
                     <div class="card">
-                        <a href="{% url 'specimen_details' specimen.slug %}" class="specimen-link">
+                        <a href="#" class="specimen-link">
                             <div class="card-body">
                                 <div class="image-container">
                                     <img src="{{ specmien.specimen_image.url }}" alt="">
