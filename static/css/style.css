@@ -42,6 +42,13 @@ nav{
     border-radius: 50%;
 }
 
+/* main section styling */
+
+.main-bg{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
 /* home page specimen display */
 .card-body {
     background-color: aquamarine;
