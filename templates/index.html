@@ -1,10 +1,10 @@
 {% extends "base.html" %} {% block content %}
 
-<div class="container-fluid row">
+<div class="container-fluid col-6 row">
     <!-- user specimen display -->
-    <div class="col-12 mt-3 left">
+    <div class="col-md-6 mt-3 left">
         {% for specimen in specimen_list %}
-            <div class="col-md-6 card">
+            <div class="col-12 card mb-3">
                 <a href="{% url 'specimen_page' specimen.slug  %}" class="specimen-link">
                     <div class="card-body">
                         <div class="image-container">

@@ -1,13 +1,51 @@
 
 /* navigation bar */
 
+ul{
+    list-style: none;
+}
 
+a{
+    color: rgb(25, 25, 25);
+}
+
+ul{
+    display: inline-block;
+}
+
+nav{
+    display: inline-block;
+}
+
+
+.navbar{
+
+    max-height: 100px;
+    width: 100%;
+    top: 0;
+    position: fixed;
+    margin-top: 0;
+    background-color: rgb(186, 186, 186);
+    border-bottom: 10px;
+}
+
+
+.container-fluid{
+    margin-top: 0;
+    display: inline-block;
+}
+
+.logo{
+    max-width: 50px;
+    max-height: 50px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+/* home page specimen display */
 .card-body {
-    border: solid black 2px;
     background-color: aquamarine;
 }
 
 
-.container {
-    border: solid black 2px;
-}
+.container{}

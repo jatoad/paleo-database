@@ -1,4 +1,5 @@
 {% load static %}
+{% load cloudinary %}
 
 <!DOCTYPE html>
 <html class="h-100">
@@ -22,26 +23,35 @@
 
     <!-- Navigation -->
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <nav class="navbar mt-0">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{% url 'home' %}">Home</a>
-                    </li>
-                    {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Logout</a>
-                    </li>
-                    {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Login (IN PROGRESS)</a>
-                    </li>
-                    {% endif %}
-                </ul>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="navbar-brand" href="{% url 'home' %}">
+                        <span class="brand">
+                           <img src="{% static 'images/paleo_database_logo.jpg' %}" alt="shark tooth" class="logo">
+                        </span>
+                        <span class="brand row">
+                            PaleoDatabase
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'home' %}">Home</a>
+                </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Logout</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Login (IN PROGRESS)</a>
+                </li>
+                {% endif %}
+            </ul>
         </div>
     </nav>
 
@@ -52,7 +62,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer mt-auto py-3 dark-bg">
+    <footer class="footer mt-auto py-3">
     </footer>
 </body>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
