@@ -1,27 +1,41 @@
 
 /* navigation bar */
 
-.nav-item{
-    margin-left: 30px;
-    color: #cecece;
-}
-
 nav{
     position: fixed;
     width: 100%;
+    z-index: 100;
+    padding: 0;
 }
 
-
-.container-fluid{
-    margin-top: 0;
-    display: inline-block;
+.nav-item{
+    margin-left: 30px;
+    color: #cecece;
+    font-weight: 600;
 }
 
 .logo{
+    position: absolute;
+    text-align: center;
+    margin-bottom: 3;
+}
+
+.logo-text{
+    font-weight: 800;
+    font-size: 800;
+    margin-bottom: 0;
+}
+
+.links{
+    float: right;
+}
+
+.logo-image{
     max-width: 50px;
     max-height: 50px;
-    overflow: hidden;
     border-radius: 50%;
+    margin-bottom: 0;
+    display: inline-block;
 }
 
 /* main section styling */
@@ -32,9 +46,8 @@ nav{
 }
 
 /* home page specimen display */
-.card-body {
-    background-color: aquamarine;
+
+.display{
+    background-color: rgb(149, 149, 149);
 }
 
-
-.container{}

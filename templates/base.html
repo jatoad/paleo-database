@@ -23,27 +23,36 @@
 
     <!-- Navigation -->
 
-    <nav class="navbar-nav mt-0 bg-dark text-muted">
-        <div class="container-fluid text-reset">
-            <ul class="me-auto mb-2 mb-lg-0 nav">
-                <li class="nav-item navbar-brand">
-                    <a class="nav-link" href="{% url 'home' %}">
-                        <img src="{% static 'images/paleo_database_logo.jpg' %}" alt="shark tooth" class="logo">
+    <nav class="navbar-nav mt-0 bg-dark">
+        <div class="container-fluid">
+            <ul class="logo me-auto align-items-center mb-2 mb-lg-0 nav left">
+                <li class="navbar-item">
+                    <a class="nav-link navbar-brand" href="{% url 'home' %}">
+                        <span class="logo-text">
+                            H
+                        </span>
+                        <span>
+                            <img src="{% static 'images/paleo_database_logo.jpg' %}" alt="shark tooth" class="logo-image">
+                        </span>
+                        <span class="logo-text">
+                            ME
+                        </span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="{% url 'home' %}">Home</a>
-                </li>
+            </ul>
+            <ul class="align-items-center me-auto mb-2 mb-lg-0 nav links">
                 {% if user.is_authenticated %}
                 <li class="nav-item accounts">
-                    <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                    <span>
+                        <a class="nav-link" href="{% url 'account_logout' %}">LOGOUT</a>
+                    </span>
                 </li>
                 {% else %}
                 <li class="nav-item accounts">
-                    <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>
+                    <a class="nav-link" href="{% url 'account_signup' %}">SIGN UP</a>
                 </li>
                 <li class="nav-item accounts">
-                    <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+                    <a class="nav-link" href="{% url 'account_login' %}">LOGIN</a>
                 </li>
                 {% endif %}
             </ul>
