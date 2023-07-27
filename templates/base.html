@@ -23,17 +23,12 @@
 
     <!-- Navigation -->
 
-    <nav class="navbar mt-0">
-        <div class="container-fluid">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="navbar-brand" href="{% url 'home' %}">
-                        <span class="brand">
-                           <img src="{% static 'images/paleo_database_logo.jpg' %}" alt="shark tooth" class="logo">
-                        </span>
-                        <span class="brand row">
-                            PaleoDatabase
-                        </span>
+    <nav class="navbar-nav mt-0 bg-dark text-muted">
+        <div class="container-fluid text-reset">
+            <ul class="me-auto mb-2 mb-lg-0 nav">
+                <li class="nav-item navbar-brand">
+                    <a class="nav-link" href="{% url 'home' %}">
+                        <img src="{% static 'images/paleo_database_logo.jpg' %}" alt="shark tooth" class="logo">
                     </a>
                 </li>
                 <li class="nav-item">
@@ -45,10 +40,10 @@
                 </li>
                 {% else %}
                 <li class="nav-item accounts">
-                    <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
+                    <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>
                 </li>
                 <li class="nav-item accounts">
-                    <a class="nav-link" href="{% url 'account_login' %}">Login (IN PROGRESS)</a>
+                    <a class="nav-link" href="{% url 'account_login' %}">Login</a>
                 </li>
                 {% endif %}
             </ul>
