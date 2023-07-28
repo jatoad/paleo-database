@@ -8,5 +8,14 @@ class CommentForm(forms.ModelForm):
         fields = ('body',)
 
 
-class SpecimenForm(forms.ModelForm)
-
+class SpecimenForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = (
+            'english_name',
+            'latin_name',
+            'specimen_image',
+            'when_found',
+            'location',
+            'additional_information',
+        )
