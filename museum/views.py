@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic, View
 from .models import Specimen
+from .forms import CommentForm
 
 
 class SpecimenList(generic.ListView):
@@ -18,10 +19,11 @@ class SpecimenInfo(View):
 
         return render(
             request,
-            "specimen_page.html", 
+            "specimen_page.html",
             {
                 "specimen": specimen,
-                "comments": comments
+                "comments": comments,
+                "comment_form": CommentForm(),
             }
         )
 
