@@ -15,7 +15,9 @@ class SpecimenInfo(View):
     def get(self, request, slug, *args, **kwargs):
         queryset = Specimen.objects.filter(status=1)
         specimen = get_object_or_404(queryset, slug=slug)
-        comments = specimen.comments.filter(approved=True).order_by("-created_on")
+        comments = specimen.comments.filter(approved=True).order_by(
+            "-created_on"
+            )
 
         return render(
             request,
