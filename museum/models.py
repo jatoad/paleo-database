@@ -14,7 +14,7 @@ class Specimen(models.Model):
         related_name='specimen_upload',
         default=True
     )
-    specimen_image = CloudinaryField('image')
+    specimen_image = CloudinaryField('image', default="placeholder")
     when_found = models.CharField(max_length=200)
     upload_date = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)

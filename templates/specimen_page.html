@@ -1,5 +1,5 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
+{% load crispy_forms_tags %}
 
 <!-- specimen display with all information -->
 <div class="container">
@@ -9,13 +9,12 @@
             <p class="specimen-name">
                 <strong>
                     <h1>{{ specimen.latin_name }}</h2>
-                    <h3> | {{ specimen.english_name }}</h3>
+                    <h3>{{ specimen.english_name }}</h3>
                 </strong>
             </p>
         </div>
         <div class="d-none d-md-block col-md-6 specimen-display-image">
-            <!-- specimen image -->
-            <img src="{{ specmien.specimen_image.url }}" alt="image of {{ specimen.english_name }}">
+            <img src=" {{ specmien.specimen_image.url }}" width="100%">
         </div>
             <!-- specimen contextual information -->
         <div class="specimen-context">
@@ -67,6 +66,21 @@
                 </p>
             </div>
             {% endfor %}
+            <div class="col-md-4 card">
+                <div class="card_body ">
+                    {% if user.is_authenticated %}
+                    <h4>comment on this post:</h4>
+                    <p>
+                        comment by {{ user.username }}
+                    </p>
+                    <form action="POST">
+                        {% crispy comment_form %}
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-submit"></button>
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
         </div>
     </div>
 </div>

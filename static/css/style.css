@@ -8,10 +8,16 @@ nav{
     padding: 0;
 }
 
+.navigation{
+    position: relative;
+    bottom: 0px;
+}
+
 .nav-item{
     margin-left: 30px;
     color: #cecece;
     font-weight: 600;
+    bottom: 0px;
 }
 
 .logo{
@@ -47,7 +53,8 @@ nav{
 
 /* home page specimen display */
 
-.display{
-    background-color: rgb(149, 149, 149);
+.card{
+    border: none;
+    background-color: rgb(179, 179, 179);
 }
 

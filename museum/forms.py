@@ -5,12 +5,12 @@ from django import forms
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ('body',)
+        fields = ('comment_content',)
 
 
 class SpecimenForm(forms.ModelForm):
     class Meta:
-        model = Comment
+        model = Specimen
         fields = (
             'english_name',
             'latin_name',

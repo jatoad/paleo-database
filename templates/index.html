@@ -1,36 +1,42 @@
 {% extends "base.html" %} {% block content %}
-
-<div class="container-fluid mt-3">
+{% load static %}
+{% load cloudinary %}
+<div class="container-fluid">
+    <div class="row">
     <!-- user specimen display -->
-    {% for specimen in specimen_list %}
-        <div class="image-container col-md-5 display row">
-            <img src="{{ specmien.specimen_image.url }}" alt="">
-        </div>
-        <div class="col-6 card mb-3 right">
-            <a href="{% url 'specimen_page' specimen.slug  %}" class="specimen-link">
-                <div class="card-body">
-                    <div class="info-container">
-                        <p class="specimen-name">
-                            <strong>
-                                <h3>{{ specimen.latin_name }}</h3>
-                                <h4> | {{ specimen.english_name }}</h4>
-                            </strong>
-                        </p>
-                        <p class="location">
-                            {{ specimen.locaton }}
-                        </p>
-                        <p class="date-found">
-                            {{ specimen.when_found }}
-                        </p>
-                        <p class="comment-count">
-                            <i class="fa-solid fa-comment-dots"></i>
-                            {{ specimen.number_of_comments }}
-                        </p>
+    <div class="col-12">
+        <div class="row">
+        {% for specimen in specimen_list %}
+            <div class="col-md-4 col-xs-8 offset-1 card mb-4 right">
+                <div class="card">
+                <a href="{% url 'specimen_page' specimen.slug  %}" class="specimen-link">
+                    <div class="card-body">
+                        <div class="info-container">
+                            <img src="{{ specmien.specimen_image.url }}" alt="">
+                            <p class="specimen-name">
+                                <strong>
+                                    <h3>{{ specimen.latin_name }}</h3>
+                                    <h4> | {{ specimen.english_name }}</h4>
+                                </strong>
+                            </p>
+                            <p class="location">
+                                {{ specimen.locaton }}
+                            </p>
+                            <p class="date-found">
+                                {{ specimen.when_found }}
+                            </p>
+                            <p class="comment-count">
+                                <i class="fa-solid fa-comment-dots"></i>
+                                {{ specimen.number_of_comments }}
+                            </p>
+                        </div>
                     </div>
+                </a>
                 </div>
-            </a>
+            </div>
+        {% endfor %}
         </div>
-     {% endfor %}
+    </div>
     </div>
 </div>
 
