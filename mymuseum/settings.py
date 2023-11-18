@@ -36,7 +36,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'mymuseum-2cb032376ab5.herokuapp.com',
-    '8000-jatoad-paleodatabase-w4ey32ppuad.ws-eu106.gitpod.io'
+    '8000-jatoad-paleodatabase-w4ey32ppuad.ws-eu106.gitpod.io',
+    '127.0.0.1',
+    '.vercel.app',
 ]
 # 'mymuseum.herokuapp.com', 'localhost',
 
