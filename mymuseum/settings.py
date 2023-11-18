@@ -36,7 +36,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'mymuseum-2cb032376ab5.herokuapp.com',
-    '8000-jatoad-paleodatabase-1cu1b9m73s4.ws-eu102.gitpod.io'
+    '8000-jatoad-paleodatabase-w4ey32ppuad.ws-eu106.gitpod.io'
 ]
 # 'mymuseum.herokuapp.com', 'localhost',
 
