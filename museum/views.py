@@ -6,20 +6,21 @@ from .forms import CommentForm, SpecimenForm
 
 class SpecimenList(generic.ListView):
     model = Specimen
-    queryset = Specimen.objects.filter(status=1).order_by("-upload_date")
+    queryset = Specimen.objects.filter(status=0).order_by("-upload_date")
+    print("queryset = ", queryset)
     template_name = "index.html"
-
 
 
 class SpecimenInfo(View):
 
     def get(self, request, slug, *args, **kwargs):
         queryset = Specimen.objects.filter(status=0)
+        print("slug = ", slug)
+        print("queryset = ", queryset)
         specimen = get_object_or_404(queryset, slug=slug)
-        comments = post.comments.filter(approved=True).order_by("-created_on")
-        liked = False
-        if specimen.likes.filter(id=self.request.user.id).exists():
-            liked = True
+
+        print("specimen = ", specimen)
+        comments = specimen.comments.filter(approved=True).order_by("-created_on")
 
         return render(
             request,
@@ -27,19 +28,18 @@ class SpecimenInfo(View):
             {
                 "specimen": specimen,
                 "comments": comments,
-                "commented": False,
-                "liked": liked,
-                "comment_form": CommentForm()
-            },
+                "comment_form": CommentForm(),
+                "specimen_form": SpecimenForm(),
+            }
         )
     
     def post(self, request, slug, *args, **kwargs):
 
         queryset = Specimen.objects.filter(status=0)
-        post = get_object_or_404(queryset, slug=slug)
-        comments = post.comments.filter(approved=True).order_by("-created_on")
+        specimen = get_object_or_404(queryset, slug=slug)
+        comments = specimen.comments.filter(approved=True).order_by("-created_on")
         liked = False
-        if post.likes.filter(id=self.request.user.id).exists():
+        if specimen.likes.filter(id=self.request.user.id).exists():
             liked = True
 
         comment_form = CommentForm(data=request.POST)

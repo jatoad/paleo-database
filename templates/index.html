@@ -11,6 +11,7 @@
                 {% for specimen in specimen_list %}
                 <div class="col-md-4">
                     <div class="card mb-4">
+                        <a href="{% url 'specimen_page' specimen.slug%}"></a>
                         <div class="card-body">
                             <div class="image-container">
                                 {% if "placeholder" in specimen.featured_image.url %}
@@ -23,7 +24,7 @@
                                     <p class="author">Author: {{ specimen.author }}</p>
                                 </div>
                             </div>
-                            <a href="{% url 'specimen_page' specimen.slug  %}" class="post-link">
+                            <a href="{% url 'specimen_page' specimen.slug  %}" class="specimen-link">
                                 <h2 class="card-title">{{ specimen.latin_name }}</h2>
                                 <p class="card-text">{{ specimen.additional_info }}</p>
                             </a>

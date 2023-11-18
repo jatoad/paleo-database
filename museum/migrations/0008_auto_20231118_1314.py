@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='specimen',
             name='likes',
-            field=models.ManyToManyField(blank=True, related_name='museumpost_like', to=settings.AUTH_USER_MODEL),
+            field=models.ManyToManyField(blank=True, related_name='museumspecimen_like', to=settings.AUTH_USER_MODEL),
         ),
         migrations.AlterField(
             model_name='specimen',

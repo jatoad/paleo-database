@@ -10,7 +10,7 @@ class Specimen(models.Model):
     english_name = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="museum_posts"
+        User, on_delete=models.CASCADE, related_name="specimen_upload"
     )
     specimen_image = CloudinaryField('image', default='placeholder')
     additional_information = models.TextField()
@@ -20,7 +20,7 @@ class Specimen(models.Model):
     updated_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(
-        User, related_name='museumpost_like', blank=True)
+        User, related_name='museumspecimen_like', blank=True)
 
 
     class Meta:
@@ -46,4 +46,4 @@ class Comment(models.Model):
         ordering = ["created_on"]
 
     def __str__(self):
-        return f"Comment {self.body} by {self.name}"
+        return f"Comment {self.comment_content} by {self.name}"
