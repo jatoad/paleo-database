@@ -1,85 +1,111 @@
 {% extends 'base.html' %} {% block content %}
 {% load crispy_forms_tags %}
 
-<!-- specimen display with all information -->
-<div class="container">
-    <div class="specimen-container">
-        <!-- species name and class -->
-        <div class="specimen-name-container">
-            <p class="specimen-name">
-                <strong>
-                    <h1>{{ specimen.latin_name }}</h2>
-                    <h3>{{ specimen.english_name }}</h3>
-                </strong>
-            </p>
-        </div>
-        <div class="d-none d-md-block col-md-6 specimen-display-image">
-            <img src=" {{ specmien.specimen_image.url }}" width="100%">
-        </div>
-            <!-- specimen contextual information -->
-        <div class="specimen-context">
-            <h3 class="location">
-                {{ specimen.locaton }}
-            </h3>
-            <h3 class="when-found">
-                {{ specimen.when_found }}
-            </h3>
-        </div>
-            <!-- further information about specimen  -->
-        <div class="specimen-additional-info">
-            <p>
-                <strong><h3>Additional Specimen Information</h3></strong>
-                {{ specimen.additional_information }}
-            </p>
+<div class="masthead">
+    <div class="container">
+        <div class="row g-0">
+            <div class="col-md-6 masthead-text">
+                <!-- specimen latin name-->
+                <h1 class="post-title">{{ specimen.latin_name }}</h1>
+                <!-- Post author goes before the | the post's created date goes after -->
+                <p class="post-subtitle">{{ specimen.author }} | {{ specimen.upload_date }}</p>
+            </div>
+            <div class="d-none d-md-block col-md-6 masthead-image">
+                <!-- The featured image URL goes in the src attribute -->
+                {% if "placeholder" in specimen.specimen_image.url %}
+                <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" width="100%">
+                {% else %}
+                <img src=" {{ specimen.specimen_image.url }}" width="100%">
+                {% endif %}
+            </div>
         </div>
     </div>
 </div>
-<hr>
-<!-- comment section for providing goudance on any misidentifications on specimens -->
+
 <div class="container">
-    <div class="comment-container col-md-8 card mb-4 mt-3">
-        <div class="amount-comments">
-            {% with comments.count as total_comments %}
-            <p>
-                <i class="fa-solid fa-comment-dots"></i>
-                <strong class="text-secondary">
-                    {{ total_comments }}
-                </strong>
-            </p>
-            {% endwith %}
-        </div>
-        <div class="comment-body">
-            <!-- loop through comments -->
-            {% for comment in comments %}
-            <div class="comments" style="padding: 10px;">
-                <p class="commenter-name"> 
-                    <strong>
-                        {{ comment.name }}
-                    </strong>
-                    suggested:
+    <div class="row">
+        <div class="col card mb-4  mt-3 left  top">
+            <div class="card-body">
+                <p class="card-text ">
+                    {{ specimen.additional_info | safe }}
                 </p>
-                <p class="comment-content">
-                    {{ comment.comment_content }}
-                </p>
-                <p class="comment-date">
-                    {{ comment.created_on }}
-                </p>
-            </div>
-            {% endfor %}
-            <div class="col-md-4 card">
-                <div class="card_body ">
-                    {% if user.is_authenticated %}
-                    <h4>comment on this post:</h4>
-                    <p>
-                        comment by {{ user.username }}
-                    </p>
-                    <form action="POST">
-                        {% crispy comment_form %}
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-submit"></button>
-                    </form>
-                    {% endif %}
+                <div class="row">
+
+                    <div class="col-1">
+                        <strong>
+                            {% if user.is_authenticated %}
+                            <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
+                                {% csrf_token %}
+                                {% if liked %}
+                                <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i class="fas fa-heart"></i></button>
+                                {% else %}
+                                <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i class="far fa-heart"></i></button>
+                                {% endif %}
+                            </form>
+                            {% else %}
+                            <span class="text-secondary"><i class="far fa-heart"></i></span>
+                            {% endif %}
+                        <!-- The number of likes goes before the closing strong tag -->
+                        <span class="text-secondary">{{ specimen.number_of_likes }} </span>
+                        </strong>
+                    </div>
+                    <div class="col-1">
+                        {% with comments.count as total_comments %}
+                        <strong class="text-secondary"><i class="far fa-comments"></i>
+                            <!-- Our total_comments variable goes before the closing strong tag -->
+                            {{ total_comments }}</strong>
+                        {% endwith %}
+                    </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 card mb-4  mt-3 ">
+            <h3>Comments:</h3>
+            <div class="card-body">
+                <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
+                {% for comment in comments %}
+                <div class="comments" style="padding: 10px;">
+                    <p class="font-weight-bold">
+                        <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
+                        {{ comment.name }}
+                        <span class=" text-muted font-weight-normal">
+                            <!-- The comment's created date goes here -->
+                            {{ comment.created_on }}
+                        </span> wrote:
+                    </p>
+                    <!-- The body of the comment goes before the | -->
+                    {{ comment.comment_content | linebreaks }}
+                </div>
+                <!-- Our for loop ends here -->
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-4 card mb-4  mt-3 ">
+            <div class="card-body">
+                <!-- For later -->
+                {% if commented %}
+                <div class="alert alert-success" role="alert">
+                    Your comment is awaiting approval
+                </div>
+                {% else %}
+                {% if user.is_authenticated %}
+
+                <h3>Leave a comment:</h3>
+                <p>Posting as: {{ user.username }}</p>
+                <form method="post" style="margin-top: 1.3em;">
+                    {{ comment_form | crispy }}
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+                </form>
+                {% endif %}
+                {% endif %}
             </div>
         </div>
     </div>
