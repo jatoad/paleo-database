@@ -23,5 +23,8 @@
       "src": "/(.*)",
       "dest": "mymuseum/wsgi.py"
     }
-  ]
+  ],
+
+  "outputDirectory": "staticfiles_build"
+  
 }
