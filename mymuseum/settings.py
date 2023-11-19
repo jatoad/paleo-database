@@ -45,7 +45,7 @@ SECRET_KEY = "jt_super^secret@key"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-jatoad-paleodatabase-w4ey32ppuad.ws-eu106.gitpod.io', 'localhost', '127.0.0.1', 'https://my-museum-08b94600c217.herokuapp.com' ]
+ALLOWED_HOSTS = ['8000-jatoad-paleodatabase-w4ey32ppuad.ws-eu106.gitpod.io', 'localhost', '127.0.0.1', 'mymuseum-5d53210dacfd.herokuapp.com' ]
 
 
 # Application definition
