@@ -39,7 +39,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 # SECRET_KEY = 'django-insecure-9nf@4x+=+6&)f-y@=-uf8x+c43$eml%o)lv8zm4#_&)(tqp##d'
 
 # SECRET_KEY = os.environ.get('SECRET_KEY')
-# SECRET_KEY = "jt_super^secret@key"
+SECRET_KEY = "jt_super^secret@key"
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
