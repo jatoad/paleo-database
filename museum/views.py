@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from .models import Specimen
 from .forms import CommentForm, SpecimenForm
+from django.http import HttpResponseRedirect
 
 
 class SpecimenList(generic.ListView):
