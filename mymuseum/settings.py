@@ -17,11 +17,14 @@ import dj_database_url
 if os.path.isfile('env.py'):
     import env
 
+CLOUD_NAME = "my-cloud"
+API_KEY = "my-api-key"
+
+CLOUDINARY_URL='cloudinary://651641183898724:ds4oi1JhyGOhP2mFJP0xWKorW3I@dxgghjw7c'
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # BASE_DIR = Path(__file__).resolve().parent.parent
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 
@@ -162,8 +165,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
-STATICFILES_DIRS = ((os.path.join(BASE_DIR, 'static')), )
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'mymuseum/static')]   
+STATIC_ROOT  = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
