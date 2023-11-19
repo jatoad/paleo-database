@@ -73,5 +73,5 @@ class SpecimenLike(View):
         else:
             specimen.likes.add(request.user)
 
-        return HttpResponseRedirect(reverse('specimen_like', args=[slug]))
+        return HttpResponseRedirect(reverse('specimen_page', args=[slug]))
 
