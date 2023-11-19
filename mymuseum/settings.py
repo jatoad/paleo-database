@@ -43,9 +43,9 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['ct-paleo-museum-df262615e6a9.herokuapp.com', 'localhost', '127.0.0.1' ]
+ALLOWED_HOSTS = ['8000-jatoad-paleodatabase-w4ey32ppuad.ws-eu106.gitpod.io', 'localhost', '127.0.0.1' ]
 
 
 # Application definition
