@@ -15,9 +15,9 @@ from pathlib import Path
 import os
 import dj_database_url
 from django.contrib.messages import constants as messages
-from .env import (
-    DATABASE_URL, SECRET_KEY, CLOUDINARY_URL, 
-)
+# from .env import (
+#     DATABASE_URL, SECRET_KEY, CLOUDINARY_URL, 
+# )
 
 CLOUD_NAME = "my-cloud"
 API_KEY = "my-api-key"
